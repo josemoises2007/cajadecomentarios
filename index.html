@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Deixe seu comentário</h1>
-        <form id="comentarioForm" action="https://ajudapratodos.000webhostapp.com/comentariostext/comentarios.php" method="POST" enctype="multipart/form-data">
+        <form id="comentarioForm" action="https://ajudapratodos.000webhostapp.com/comentariostext/processa_comentario.php" method="POST" enctype="multipart/form-data">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
 
@@ -131,7 +131,7 @@ form button {
         }
     });
 
-    fetch('https://ajudapratodos.000webhostapp.com/comentariostext/comentarios.php')
+    fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php')
         .then(response => response.json())
         .then(comentarios => {
             comentarios.forEach(comentario => {
