@@ -5,33 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Comentários</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Deixe seu comentário</h1>
-        <form id="comentarioForm" action="https://ajudapratodos.000webhostapp.com/comentariostext/processa_comentario.php" method="POST" enctype="multipart/form-data">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-
-            <label for="comentario">Comentário:</label>
-            <textarea id="comentario" name="comentario" required></textarea>
-
-            <input type="checkbox" id="addFoto" name="addFoto" value="yes">
-            <label for="addFoto">Adicionar uma foto de perfil ao comentário?</label>
-
-            <div id="fotoContainer" style="display: none;">
-                <label for="foto">Foto de Perfil:</label>
-                <input type="file" id="foto" name="foto">
-            </div>
-
-            <button type="submit">Enviar</button>
-        </form>
-        <div id="comentarios">
-            <!-- Comentários serão carregados aqui -->
-        </div>
-    </div>
-<style>
-   body {
+    <style>
+        /* Estilos CSS inline para simplificação do exemplo */
+        body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #ff7e5f, #feb47b);
             display: flex;
@@ -189,66 +165,98 @@
                 font-size: 0.9rem;
             }
         }
-</style>
-    <script >document.addEventListener('DOMContentLoaded', function () {
-    const addFotoCheckbox = document.getElementById('addFoto');
-    const fotoContainer = document.getElementById('fotoContainer');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Deixe seu comentário</h1>
+        <form id="comentarioForm" action="https://ajudapratodos.000webhostapp.com/comentariostext/processa_comentario.php" method="POST" enctype="multipart/form-data">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-    addFotoCheckbox.addEventListener('change', function () {
-        if (addFotoCheckbox.checked) {
-            fotoContainer.style.display = 'block';
-        } else {
-            fotoContainer.style.display = 'none';
-        }
-    });
-});
-</script><script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const addFotoCheckbox = document.getElementById('addFoto');
-    const fotoContainer = document.getElementById('fotoContainer');
-    const comentariosDiv = document.getElementById('comentarios');
+            <label for="comentario">Comentário:</label>
+            <textarea id="comentario" name="comentario" required></textarea>
 
-    addFotoCheckbox.addEventListener('change', function () {
-        if (addFotoCheckbox.checked) {
-            fotoContainer.style.display = 'block';
-        } else {
-            fotoContainer.style.display = 'none';
-        }
-    });
+            <input type="checkbox" id="addFoto" name="addFoto" value="yes">
+            <label for="addFoto">Adicionar uma foto de perfil ao comentário?</label>
 
-    fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php')
-        .then(response => response.json())
-        .then(comentarios => {
-            comentarios.forEach(comentario => {
-                const comentarioDiv = document.createElement('div');
-                comentarioDiv.classList.add('comentario');
+            <div id="fotoContainer" style="display: none;">
+                <label for="foto">Foto de Perfil:</label>
+                <input type="file" id="foto" name="foto">
+            </div>
 
-                const nome = document.createElement('h3');
-                nome.textContent = comentario.nome;
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="comentarios">
+            <!-- Comentários serão carregados aqui -->
+        </div>
+    </div>
 
-                const texto = document.createElement('p');
-                texto.textContent = comentario.comentario;
-
-                comentarioDiv.appendChild(nome);
-                comentarioDiv.appendChild(texto);
-
-                if (comentario.foto) {
-                    const foto = document.createElement('img');
-                    foto.src = 'https://ajudapratodos.000webhostapp.com/comentariostext/' + comentario.foto;
-                    comentarioDiv.appendChild(foto);
-                }
-
-                comentariosDiv.appendChild(comentarioDiv);
-            });
-        });
-});
-
-</script>
     <script>
-fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php', {headers: {"x-test": "algum valor"}})
-.then(res => res.json())
-.then(res => document.getElementById('comentarios').textContent = res.text)
-.catch(error => document.getElementById('comentarios').textContent = error.message);
-</script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addFotoCheckbox = document.getElementById('addFoto');
+            const fotoContainer = document.getElementById('fotoContainer');
+            const comentariosDiv = document.getElementById('comentarios');
+
+            addFotoCheckbox.addEventListener('change', function () {
+                if (addFotoCheckbox.checked) {
+                    fotoContainer.style.display = 'block';
+                } else {
+                    fotoContainer.style.display = 'none';
+                }
+            });
+
+            fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php')
+                .then(response => response.json())
+                .then(comentarios => {
+                    comentarios.forEach(comentario => {
+                        const comentarioDiv = document.createElement('div');
+                        comentarioDiv.classList.add('comment'); // Corrigido para 'comment'
+
+                        const nome = document.createElement('h3');
+                        nome.textContent = comentario.nome;
+
+                        const texto = document.createElement('p');
+                        texto.textContent = comentario.comentario;
+
+                        comentarioDiv.appendChild(nome);
+                        comentarioDiv.appendChild(texto);
+
+                        if (comentario.foto) {
+                            const foto = document.createElement('img');
+                            foto.src = 'https://ajudapratodos.000webhostapp.com/comentariostext/' + comentario.foto;
+                            foto.classList.add('profile-pic'); // Adicionando classe 'profile-pic' para estilização correta
+                            comentarioDiv.appendChild(foto);
+                        }
+
+                        comentariosDiv.appendChild(comentarioDiv);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar comentários:', error));
+        });
+
+        // Exemplo de envio de comentário (requer backend para processar o formulário)
+        document.getElementById('comentarioForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita o envio padrão do formulário para não recarregar a página
+
+            const formData = new FormData(this);
+
+            fetch('https://ajudapratodos.000webhostapp.com/comentariostext/processa_comentario.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar comentário');
+                }
+                return response.json();
+            })
+            .then(result => {
+                // Limpar o formulário ou dar feedback de sucesso, se necessário
+                console.log('Comentário enviado com sucesso:', result);
+            })
+            .catch(error => console.error('Erro ao enviar comentário:', error));
+        });
+    </script>
 </body>
 </html>
