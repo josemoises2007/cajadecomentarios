@@ -30,137 +30,165 @@
             <!-- Comentários serão carregados aqui -->
         </div>
     </div>
-<style>/**
- * Neon Purple: #6a0dad
- * Aqua Marina: #66ffff
- * Oscuro: #000000
- ----------------------------------*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<style>
+   body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-wrap: wrap;
+            align-content: stretch;
+        }
 
-a {
-    color: #66ffff;
-    text-decoration: none;
-}
+        .comment-box {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            max-width: 90%;
+            margin: 30px;
+        }
 
-ul {
-    list-style-type: none;
-}
+        .comment-box h2,
+        .comment-form h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #000000;
-    margin: 0;
-    padding: 0;
-}
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
 
-.container {
-    width: 50%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-}
+        .comment:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
 
-h1 {
-    text-align: center;
-    font-size: 36px;
-    color: #6a0dad;
-    font-weight: 400;
-    margin-top: 20px;
-}
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-form {
-    background: #E60CFD;
-    padding: 20px;
-    box-shadow:   0 0 29px rgba(137, 11, 150, .7),
-          0 0 59px rgba(137, 11, 150, .7),
-          0 0 119px rgba(137, 11, 150, .7);
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
+        .comment-content {
+            flex: 1;
+        }
 
-form label {
-    display: block;
-    margin-top: 10px;
-    color: #66ffff;
-}
+        .commenter-name {
+            font-weight: bold;
+            color: #444;
+        }
 
-form input[type="text"],
-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 2px solid #66ffff;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #66ffff;
-}
+        .commenter-perspective {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 5px;
+        }
 
-form input[type="file"] {
-    margin-top: 10px;
-    color: #66ffff;
-}
+        .comment-text {
+            color: #555;
+            line-height: 1.5;
+        }
 
-form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #66ffff;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px rgba(102, 255, 255, 0.8);
-}
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            align-content: space-around;
+            justify-content: flex-start;
+            align-items: center;
+            background: #E60CFD;
+            padding: 20px;
+            box-shadow: 0 0 29px rgba(137, 11, 150, .7),
+                        0 0 59px rgba(137, 11, 150, .7),
+                        0 0 119px rgba(137, 11, 150, .7);
+            border-radius: 10px;
+            width: 100%;
+        }
 
-#comentarios {
-    background: #6a0dad;
-    padding: 20px;
-    box-shadow: 0px 0px 20px rgba(106, 13, 173, 0.8);
-    border-radius: 10px;
-}
+        .comment-form label {
+            display: block;
+            margin-top: 10px;
+            color: #66ffff;
+        }
 
-.comentario {
-    margin-bottom: 20px;
-    border: 2px solid #66ffff;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 20px rgba(102, 255, 255, 0.8);
-}
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 2px solid #66ffff;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #66ffff;
+        }
 
-.comentario img {
-    max-width: 100px;
-    display: block;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 2px solid #66ffff;
-}
+        .comment-form input[type="file"] {
+            margin-top: 10px;
+            color: #66ffff;
+        }
 
-.comentario h3 {
-    margin: 0;
-    color: #66ffff;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
+        .comment-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #66ffff;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 20px rgba(102, 255, 255, 0.8);
+            transition: background-color 0.3s;
+        }
 
-.comentario p {
-    margin: 0;
-    color: #66ffff;
-    font-size: 16px;
-    line-height: 1.5;
-}
+        .comment-form button:hover {
+            background-color: #feb47b;
+        }
 
-.hidden {
-    display: none;
-}
+        /* Media Query para dispositivos móveis */
+        @media (max-width: 600px) {
+            .comment-box {
+                width: 100%;
+                padding: 15px;
+            }
 
+            .comment-box h2,
+            .comment-form h3 {
+                font-size: 1.5rem;
+            }
 
+            .profile-pic {
+                width: 40px;
+                height: 40px;
+            }
+
+            .comment-content {
+                font-size: 0.9rem;
+            }
+
+            .comment-form input[type="text"],
+            .comment-form textarea {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .comment-form button {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+        }
 </style>
     <script >document.addEventListener('DOMContentLoaded', function () {
     const addFotoCheckbox = document.getElementById('addFoto');
