@@ -62,6 +62,11 @@ body {
     margin: auto;
     overflow: hidden;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo translúcido */
+    backdrop-filter: blur(10px); /* Desfoque para efeito de vidro */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda leve */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 h1 {
@@ -73,13 +78,12 @@ h1 {
 }
 
 form {
-    background: #E60CFD;
+    background: rgba(230, 12, 253, 0.9); /* Fundo translúcido */
     padding: 20px;
-    box-shadow:   0 0 29px rgba(137, 11, 150, .7),
-          0 0 59px rgba(137, 11, 150, .7),
-          0 0 119px rgba(137, 11, 150, .7);
-    margin-bottom: 20px;
     border-radius: 10px;
+    backdrop-filter: blur(10px); /* Desfoque para efeito de vidro */
+    box-shadow: 0 4px 6px rgba(137, 11, 150, 0.7); /* Sombra suave */
+    margin-bottom: 20px;
 }
 
 form label {
@@ -95,7 +99,7 @@ form textarea {
     margin-top: 10px;
     border-radius: 5px;
     border: 2px solid #66ffff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
     color: #66ffff;
 }
 
@@ -118,20 +122,22 @@ form button {
 }
 
 #comentarios {
-    background: #6a0dad;
+    background: rgba(106, 13, 173, 0.9); /* Fundo translúcido */
     padding: 20px;
-    box-shadow: 0px 0px 20px rgba(106, 13, 173, 0.8);
     border-radius: 10px;
+    backdrop-filter: blur(10px); /* Desfoque para efeito de vidro */
+    box-shadow: 0px 0px 20px rgba(106, 13, 173, 0.8); /* Sombra suave */
 }
 
 .comentario {
-       display: flex;
+    display: flex;
     margin-bottom: 20px;
     border: 2px solid #66ffff;
     padding: 15px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 20px rgba(102, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+    backdrop-filter: blur(10px); /* Desfoque para efeito de vidro */
+    box-shadow: 0px 0px 20px rgba(102, 255, 255, 0.8); /* Sombra suave */
     align-content: space-between;
     align-items: baseline;
     justify-content: space-between;
@@ -165,6 +171,7 @@ form button {
 .hidden {
     display: none;
 }
+
 
 
 </style>
