@@ -50,10 +50,29 @@ ul {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Fundo mais claro */
+  
+	        animation: color-change-5x 8s linear infinite alternate both;/* Fundo mais claro */
     margin: 0;
     padding: 0;
 }
+@keyframes color-change-5x {
+  0% {
+    background: #aaffee;
+  }
+  25% {
+    background: #4665ff;
+  }
+  50% {
+    background: #46ffd2;
+  }
+  75% {
+    background: #0d8f8a;
+  }
+  100% {
+    background:#0d438f;
+  }
+}
+
 
 .container {
     width: 50%;
